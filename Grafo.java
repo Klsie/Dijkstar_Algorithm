@@ -52,6 +52,25 @@ public class Grafo {
 
         return existe;
     }
+
+        public void nuevoArco (Nodo origen, Nodo destino) {
+        if (existeVertice(origen) && existeVertice(destino)) {
+            Nodo posicion = primero;
+            while (!posicion.dato.equals(origen.getDato())) {
+                posicion = posicion.getSiguiente();
+            }
+            int costo = (int) (Math.random() * (10 - 1) + 1);
+            posicion.lista.nuevaAdyacencia(destino, costo);
+            posicion = primero;
+            while (!posicion.dato.equals(destino.getDato())) {
+                posicion = posicion.getSiguiente();
+            }
+            posicion.lista.nuevaAdyacencia(origen, costo);
+
+            System.out.println("Origen: " + origen.getDato() + " Costo: " + costo + " Destino: " + destino.getDato()+ "\n");
+
+        }
+    }
     
     public void nuevoArco(Nodo origen, Nodo destino, int costo) {
     if (existeVertice(origen) && existeVertice(destino)) {
